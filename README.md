@@ -26,9 +26,9 @@ for ubuntu 14 (https://docs.docker.com/installation/ubuntulinux/):
 
 - pull docker
 
-    $ docker pull halilintar8/mcsaky-opengts
+        $ docker pull halilintar8/mcsaky-opengts
 
-    $ docker pull halilintar8/mcsaky-opengts-mysql
+        $ docker pull halilintar8/mcsaky-opengts-mysql
 
 
 To build the Dockerfile:
@@ -46,7 +46,7 @@ Start opengts and link to mysql database:
 
     $ docker run -it  -p 8080:8080  --name opengts --link opengts_mysql:mysql halilintar8/mcsaky-opengts
 
-ctrl p+q (to exit/detach from docker container without closing it)
+    ctrl p+q (to exit/detach from docker container without closing it)
 
 ## 
 After tomcat started, you can log to your machine on port 8080, for example:
