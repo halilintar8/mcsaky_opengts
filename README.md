@@ -33,9 +33,9 @@ for ubuntu 14 (https://docs.docker.com/installation/ubuntulinux/):
 
 To build the Dockerfile:
 
-- clone this github repo to your folder, and then
+    clone this github repo to your folder, and then
 
--   $ docker build -t halilintar8/opengts .
+    $ docker build -t halilintar8/opengts .
 
 
 Start mysql and set the root password:
