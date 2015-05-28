@@ -3,7 +3,7 @@ credited to :
 
 https://registry.hub.docker.com/u/mcsaky/opengts/
 
-Keep in touch on my G+ page related to opengts: 
+Keep in touch on my (mcsaky) G+ page related to opengts: 
 
 https://plus.google.com/u/0/b/111505754940008833839/111505754940008833839/posts
 
