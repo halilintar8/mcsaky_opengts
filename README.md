@@ -16,9 +16,7 @@ OpenGTS tracking server from http://opengts.sourceforge.net/
 
 ## How to use:
 
-- install docker
-
-for ubuntu 14 (https://docs.docker.com/installation/ubuntulinux/):
+- install docker, for ubuntu 14 (https://docs.docker.com/installation/ubuntulinux/):
 
     $ sudo apt-get update $ sudo apt-get install wget
 
@@ -26,9 +24,9 @@ for ubuntu 14 (https://docs.docker.com/installation/ubuntulinux/):
 
 - pull docker
 
-        $ docker pull halilintar8/mcsaky-opengts
+    $ docker pull halilintar8/mcsaky-opengts
 
-        $ docker pull halilintar8/mcsaky-opengts-mysql
+    $ docker pull halilintar8/mcsaky-opengts-mysql
 
 
 To build the Dockerfile:
