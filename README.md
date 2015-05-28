@@ -18,15 +18,15 @@ OpenGTS tracking server from http://opengts.sourceforge.net/
 
 - install docker, for ubuntu 14 (https://docs.docker.com/installation/ubuntulinux/):
 
-    $ sudo apt-get update $ sudo apt-get install wget
+        $ sudo apt-get update $ sudo apt-get install wget
 
-    $ wget -qO- https://get.docker.com/ | sh
+        $ wget -qO- https://get.docker.com/ | sh
 
 - pull docker
 
-    $ docker pull halilintar8/mcsaky-opengts
+        $ docker pull halilintar8/mcsaky-opengts
 
-    $ docker pull halilintar8/mcsaky-opengts-mysql
+        $ docker pull halilintar8/mcsaky-opengts-mysql
 
 
 To build the Dockerfile:
@@ -46,7 +46,7 @@ Start opengts and link to mysql database:
 
     ctrl p+q (to exit/detach from docker container without closing it)
 
-## 
+
 After tomcat started, you can log to your machine on port 8080, for example:
 
       http://localhost:8080 for tomcat (manager is admin, password admin)
