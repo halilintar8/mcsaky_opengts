@@ -42,6 +42,10 @@ Start mysql and set the root password:
 
 Start opengts and link to mysql database:
 
+    $ docker run -d -p 8080:8080 --name opengts --link opengts_mysql:mysql halilintar8/mcsaky-opengts (recommended)
+    
+    or :
+
     $ docker run -it  -p 8080:8080  --name opengts --link opengts_mysql:mysql halilintar8/mcsaky-opengts
 
     ctrl p+q (to exit/detach from docker container without closing it)
