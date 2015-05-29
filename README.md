@@ -2,16 +2,17 @@
 
 ## credited to : 
 
-https://registry.hub.docker.com/u/mcsaky/opengts/
+        https://registry.hub.docker.com/u/mcsaky/opengts/
 
 Keep in touch on my (mcsaky) G+ page related to opengts: 
 
-https://plus.google.com/u/0/b/111505754940008833839/111505754940008833839/posts
+        https://plus.google.com/u/0/b/111505754940008833839/111505754940008833839/posts
 
 
 - Modified by halilintar8 :) :
 
-OpenGTS tracking server from http://opengts.sourceforge.net/
+OpenGTS tracking server from 
+        http://opengts.sourceforge.net/
 
 
 ## How to use:
