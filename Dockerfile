@@ -7,7 +7,7 @@ ENV CATALINA_HOME /usr/local/tomcat
 ENV GTS_VERSION 2.6.2
 ENV TOMCAT_VERSION 7.0.54
 ENV JAVA_HOME /usr/local/java
-ENV ORACLE_JAVA_HOME /usr/lib/jvm/java-6-oracle/
+ENV ORACLE_JAVA_HOME /usr/lib/jvm/java-7-oracle/
 
 RUN \
   echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
@@ -17,16 +17,17 @@ RUN \
   apt-get install -y software-properties-common && \
   add-apt-repository -y ppa:webupd8team/java && \
   apt-get update && \
-  apt-get install -y oracle-java6-installer
+  apt-get install -y oracle-java7-installer
 
 RUN ln -s $ORACLE_JAVA_HOME $JAVA_HOME
 
-RUN apt-get -y install libmysql-java  liblog4j1.2-java libgnumail-java ant curl unzip  sudo tar
+RUN apt-get -y install libmysql-java  liblog4j1.2-java libgnumail-java ant curl unzip  sudo tar vim
 
 RUN curl -L http://downloads.sourceforge.net/project/opengts/server-base/$GTS_VERSION/OpenGTS_$GTS_VERSION.zip -o /usr/local/OpenGTS_$GTS_VERSION.zip && \
     unzip /usr/local/OpenGTS_$GTS_VERSION.zip -d /usr/local && \
-    ln -s /usr/local/OpenGTS_$GTS_VERSION $GTS_HOME
-
+    ln -s /usr/local/OpenGTS_$GTS_VERSION $GTS_HOME && \
+    cd $GTS_HOME/src/org/opengts/war/gprmc/ && mv Data.java Data.java.asli && wget http://www.geotelematic.com/CelltracGTS/gprmc/Data.java
+    
 RUN curl -L http://archive.apache.org/dist/tomcat/tomcat-7/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz -o /usr/local/tomcat.tar.gz
 
 RUN  tar zxf /usr/local/tomcat.tar.gz -C /usr/local && rm /usr/local/tomcat.tar.gz && ln -s /usr/local/apache-tomcat-$TOMCAT_VERSION $CATALINA_HOME
