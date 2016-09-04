@@ -13,6 +13,8 @@ https://plus.google.com/u/0/b/111505754940008833839/111505754940008833839/posts
 
 OpenGTS tracking server from http://opengts.sourceforge.net/
 
+http://www.geotelematic.com/CelltracGTS/GPRMC.html
+
 
 ## How to use:
 
