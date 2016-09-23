@@ -17,17 +17,17 @@ RUN \
   apt-get install -y software-properties-common && \
   add-apt-repository -y ppa:webupd8team/java && \
   apt-get update && \
-  apt-get install -y oracle-java7-installer
+  apt-get install -y oracle-java7-installer  
 
 RUN ln -s $ORACLE_JAVA_HOME $JAVA_HOME
 
-RUN apt-get -y install libmysql-java  liblog4j1.2-java libgnumail-java ant curl unzip  sudo tar vim
+RUN apt-get -y install libmysql-java  liblog4j1.2-java libgnumail-java ant curl unzip  sudo tar vim gconf2
 
 RUN curl -L http://downloads.sourceforge.net/project/opengts/server-base/$GTS_VERSION/OpenGTS_$GTS_VERSION.zip -o /usr/local/OpenGTS_$GTS_VERSION.zip && \
     unzip /usr/local/OpenGTS_$GTS_VERSION.zip -d /usr/local && \
     ln -s /usr/local/OpenGTS_$GTS_VERSION $GTS_HOME && \
     cd $GTS_HOME/src/org/opengts/war/gprmc/ && mv Data.java Data.java.asli && wget http://www.geotelematic.com/CelltracGTS/gprmc/Data.java
-    
+
 RUN curl -L http://archive.apache.org/dist/tomcat/tomcat-7/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz -o /usr/local/tomcat.tar.gz
 
 RUN  tar zxf /usr/local/tomcat.tar.gz -C /usr/local && rm /usr/local/tomcat.tar.gz && ln -s /usr/local/apache-tomcat-$TOMCAT_VERSION $CATALINA_HOME
@@ -51,9 +51,14 @@ RUN cd $GTS_HOME; sed -i 's/\(mysql-connector-java\).*.jar/\1-5.1.31-bin.jar/' b
 
 ADD run.sh /usr/local/apache-tomcat-$TOMCAT_VERSION/bin/
 RUN chmod 755 /usr/local/apache-tomcat-$TOMCAT_VERSION/bin/run.sh
-
+RUN apt-get update && apt install -y mysql-client
+RUN mkdir /usr/local/traccar/ && cd /usr/local/traccar/ && wget https://github.com/tananaev/traccar/releases/download/v3.7/traccar-linux-64-3.7.zip && unzip traccar-linux-64-3.7.zip && ./traccar.run
+RUN cd /opt/traccar/conf/ && mv traccar.xml traccar.xml.asli
+ADD traccar.xml /opt/traccar/conf/
+RUN /opt/traccar/bin/traccar start
 
 RUN rm -rf /usr/local/tomcat/webapps/examples /usr/local/tomcat/webapps/docs
-EXPOSE 8080
+
+EXPOSE 5001-5120 8080 8090 9000
 CMD ["/usr/local/tomcat/bin/run.sh"]
 
