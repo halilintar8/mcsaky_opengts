@@ -55,7 +55,7 @@ RUN apt-get update && apt install -y mysql-client
 RUN mkdir /usr/local/traccar/ && cd /usr/local/traccar/ && wget https://github.com/tananaev/traccar/releases/download/v3.7/traccar-linux-64-3.7.zip && unzip traccar-linux-64-3.7.zip && ./traccar.run
 RUN cd /opt/traccar/conf/ && mv traccar.xml traccar.xml.asli
 ADD traccar.xml /opt/traccar/conf/
-RUN /opt/traccar/bin/traccar start
+#RUN /opt/traccar/bin/traccar start
 
 RUN rm -rf /usr/local/tomcat/webapps/examples /usr/local/tomcat/webapps/docs
 
