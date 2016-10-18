@@ -4,7 +4,7 @@ MAINTAINER mcsaky <mihai.csaky@sysop-consulting.ro>
 
 ENV GTS_HOME /usr/local/gts
 ENV CATALINA_HOME /usr/local/tomcat
-ENV GTS_VERSION 2.6.2
+ENV GTS_VERSION 2.6.3
 ENV TOMCAT_VERSION 7.0.54
 ENV JAVA_HOME /usr/local/java
 ENV ORACLE_JAVA_HOME /usr/lib/jvm/java-7-oracle/
