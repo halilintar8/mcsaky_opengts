@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER mcsaky <mihai.csaky@sysop-consulting.ro>
 
-#RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 ENV GTS_HOME /usr/local/gts
 ENV CATALINA_HOME /usr/local/tomcat
@@ -12,9 +12,9 @@ ENV JAVA_HOME /usr/local/java
 ENV ORACLE_JAVA_HOME /usr/lib/jvm/java-7-oracle/
 
 RUN \
-  #echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-  #echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
-  echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
+  #echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
   apt-get update && \
   apt-get install -y python-software-properties && \
   apt-get install -y software-properties-common && \
