@@ -17,6 +17,14 @@
     <entry key='logger.level'>all</entry>
     <entry key='logger.file'>/opt/traccar/logs/tracker-server.log</entry>
 
+    <entry key='event.enable'>true</entry>
+    <entry key='event.overspeedHandler'>true</entry>
+    <entry key='event.overspeed.notRepeat'>true</entry>
+    <entry key='event.motionHandler'>true</entry>
+    <entry key='event.geofenceHandler'>true</entry>
+    <entry key='event.alertHandler'>true</entry>
+    <entry key='event.ignitionHandler'>true</entry>
+
     <!-- DATABASE CONFIG -->
 
     <entry key='database.driver'>com.mysql.jdbc.Driver</entry>
@@ -24,20 +32,22 @@
     <entry key='database.user'>root</entry>
     <entry key='database.password'>GtsSecretPassword</entry>
 
- 	
-<entry key='database.selectDevices'>
-    SELECT CONCAT('1', imeiNumber) AS id, imeiNumber AS uniqueId FROM Device WHERE imeiNumber REGEXP '^[0-9]+$';
-</entry>
+    <entry key='database.ignoreUnknown'>true</entry>
+	
+	
+	<entry key='database.selectDevicesAll'>
+        SELECT CONCAT('1', imeiNumber) AS id, imeiNumber AS uniqueId FROM Device WHERE imeiNumber REGEXP '^[0-9]+$';
+    </entry>
 
-<entry key='database.insertPosition'>
-    START TRANSACTION;
-        UPDATE Device SET lastValidLatitude = :latitude, lastValidLongitude = :longitude, lastGPSTimestamp = UNIX_TIMESTAMP(:fixTime), lastUpdateTime = UNIX_TIMESTAMP(NOW()) WHERE imeiNumber = SUBSTRING(CAST(:deviceId AS CHAR(32)), 2);
-        SELECT @accountID := accountID, @deviceID := deviceID FROM Device WHERE imeiNumber = SUBSTRING(CAST(:deviceId AS CHAR(32)), 2);
-        INSERT INTO EventData (accountID, deviceID, timestamp, statusCode, latitude, longitude, speedKPH, heading, altitude, rawData, creationTime, address)
-        VALUES (@accountID, @deviceID, UNIX_TIMESTAMP(:fixTime), 0, :latitude, :longitude, :speed * 1.852, :course, :altitude, '', UNIX_TIMESTAMP(NOW()), :address);
-    COMMIT;
-</entry>
-
+    <entry key='database.insertPosition'>
+        START TRANSACTION;
+            UPDATE Device SET lastValidLatitude = :latitude, lastValidLongitude = :longitude, lastGPSTimestamp = UNIX_TIMESTAMP(:fixTime), lastUpdateTime = UNIX_TIMESTAMP(NOW()) WHERE imeiNumber = SUBSTRING(CAST(:deviceId AS CHAR(32)), 2);
+            SELECT @accountID := accountID, @deviceID := deviceID FROM Device WHERE imeiNumber = SUBSTRING(CAST(:deviceId AS CHAR(32)), 2);
+            INSERT INTO EventData (accountID, deviceID, timestamp, statusCode, latitude, longitude, speedKPH, heading, altitude, rawData, creationTime, address)
+            VALUES (@accountID, @deviceID, UNIX_TIMESTAMP(:fixTime), 0, :latitude, :longitude, :speed * 1.852, :course, :altitude, '', UNIX_TIMESTAMP(NOW()), :address);
+        COMMIT;
+    </entry>
+	
 
 	<!-- 
 	
