@@ -13,8 +13,7 @@ ENV ORACLE_JAVA_HOME /usr/lib/jvm/java-8-oracle/
 
 RUN \
   echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-  echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
-  #echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \  
   apt-get update && \
   apt-get install -y python-software-properties && \
   apt-get install -y software-properties-common && \
@@ -38,7 +37,8 @@ RUN  tar zxf /usr/local/tomcat.tar.gz -C /usr/local && rm /usr/local/tomcat.tar.
 ADD tomcat-users.xml /usr/local/apache-tomcat-$TOMCAT_VERSION/conf/
 
 #put java.mail in place
-RUN curl -L http://java.net/projects/javamail/downloads/download/javax.mail.jar -o /usr/local/OpenGTS_$GTS_VERSION/jlib/javamail/javax.mail.jar
+#RUN curl -L http://java.net/projects/javamail/downloads/download/javax.mail.jar -o /usr/local/OpenGTS_$GTS_VERSION/jlib/javamail/javax.mail.jar
+RUN curl -L https://github.com/javaee/javamail/releases/download/JAVAMAIL-1_6_0/javax.mail.jar -o /usr/local/OpenGTS_$GTS_VERSION/jlib/javamail/javax.mail.jar
 
 # put mysql.java in place
 RUN curl -L http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.31.tar.gz  -o /usr/local/OpenGTS_$GTS_VERSION/jlib/jdbc.mysql/mysql-connector-java-5.1.31.tar.gz && \
