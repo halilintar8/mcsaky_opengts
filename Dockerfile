@@ -47,7 +47,7 @@ RUN curl -L http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-
 
 RUN cp $GTS_HOME/jlib/*/*.jar $CATALINA_HOME/lib/
 RUN cp $GTS_HOME/jlib/*/*.jar $JAVA_HOME/jre/lib/ext/
-RUN cp $GTS_HOME/jlib/*/*.jar $GTS_HOME/build/lib/
+#RUN cp $GTS_HOME/jlib/*/*.jar $GTS_HOME/build/lib/
 
 RUN cd $GTS_HOME; sed -i 's/\(mysql-connector-java\).*.jar/\1-5.1.31-bin.jar/' build.xml; \
     sed -i 's/\(<include name="mail.jar"\/>\)/\1\n\t<include name="javax.mail.jar"\/>/' build.xml; \
