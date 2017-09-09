@@ -25,7 +25,7 @@
     <entry key='database.password'>GtsSecretPassword</entry>
 
  	
-<entry key='database.selectDevices'>
+<entry key='database.selectDevicesAll'>
     SELECT CONCAT('1', imeiNumber) AS id, imeiNumber AS uniqueId FROM Device WHERE imeiNumber REGEXP '^[0-9]+$';
 </entry>
 
