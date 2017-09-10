@@ -12,3 +12,6 @@ $GTS_HOME/bin/admin.sh Account -account=sysadmin -pass=sysadmin -create
 cp $GTS_HOME/build/*.war $CATALINA_HOME/webapps/
 $CATALINA_HOME/bin/catalina.sh run
 
+cd $GTS_HOME; ant all && ant track.deploy && ant gprmc.deploy && ant events.deploy
+/opt/traccar/bin/traccar start
+
