@@ -7,7 +7,8 @@ cd $GTS_HOME; ant all
 #$GTS_HOME/bin/initdb.pl -rootPass=$MYSQL_ENV_MYSQL_ROOT_PASSWORD
 $GTS_HOME/bin/initdb.pl -rootUser=root -rootPass=$MYSQL_ENV_MYSQL_ROOT_PASSWORD
 $GTS_HOME/bin/dbAdmin.pl -tables=ca
-$GTS_HOME/bin/admin.sh Account -account=sysadmin -nopass -create
+#$GTS_HOME/bin/admin.sh Account -account=sysadmin -nopass -create
+$GTS_HOME/bin/admin.sh Account -account=sysadmin -pass=sysadmin -create
 cp $GTS_HOME/build/*.war $CATALINA_HOME/webapps/
 $CATALINA_HOME/bin/catalina.sh run
 
