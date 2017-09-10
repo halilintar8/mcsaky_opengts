@@ -13,5 +13,5 @@ cp $GTS_HOME/build/*.war $CATALINA_HOME/webapps/
 $CATALINA_HOME/bin/catalina.sh run
 
 cd $GTS_HOME; ant all && ant track.deploy && ant gprmc.deploy && ant events.deploy
-/opt/traccar/bin/traccar start
+cd /opt/traccar/bin/; ./traccar start
 
