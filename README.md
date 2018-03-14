@@ -18,11 +18,7 @@ http://www.geotelematic.com/CelltracGTS/GPRMC.html
 
 ## How to use:
 
-- install docker, for ubuntu 14 (https://docs.docker.com/installation/ubuntulinux/):
-
-        $ sudo apt-get update $ sudo apt-get install wget
-
-        $ wget -qO- https://get.docker.com/ | sh
+- install docker ce for ubuntu 16 (https://docs.docker.com/install/linux/docker-ce/ubuntu/):
 
 - pull docker
 
