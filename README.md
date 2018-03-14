@@ -40,15 +40,15 @@ To build the Dockerfile:
 
 Start mysql and set the root password:
 
-    $ docker run --name opengts_mysql -e MYSQL_ROOT_PASSWORD=GtsSecretPassword -d halilintar8/mcsaky-opengts-mysql
+    $ docker run --name opengts_mysql -e MYSQL_ROOT_PASSWORD=GtsSecretPassword -d mariadb:latest
 
 Start opengts and link to mysql database:
 
-    $ docker run -d -p 8080:8080 --name opengts --link opengts_mysql:mysql halilintar8/mcsaky-opengts (recommended)
+    $ docker run -d -p 8080:8080 -p 5055:5055 --name opengts --link opengts_mysql:mysql halilintar8/opengts (recommended)
     
     or :
 
-    $ docker run -it  -p 8080:8080  --name opengts --link opengts_mysql:mysql halilintar8/mcsaky-opengts
+    $ docker run -it -p 8080:8080 -p 5055:5055 --name opengts --link opengts_mysql:mysql halilintar8/opengts
 
     ctrl p+q (to exit/detach from docker container without closing it)
 
@@ -59,6 +59,6 @@ After tomcat started, you can log to your machine on port 8080, for example:
 
 or to opengts track application:
 
-      http://localhost:8080/track/Track (Account sysadmin is created without password).
+      http://localhost:8080/track/Track (account=sysadmin, password=sysadmin).
 
 
