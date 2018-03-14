@@ -1,4 +1,5 @@
-FROM ubuntu:16.04
+#FROM ubuntu:16.04
+FROM phusion/baseimage
 
 MAINTAINER mcsaky <mihai.csaky@sysop-consulting.ro>
 
@@ -6,8 +7,9 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 
 ENV GTS_HOME /usr/local/gts
 ENV CATALINA_HOME /usr/local/tomcat
-ENV GTS_VERSION 2.6.4
-ENV TOMCAT_VERSION 8.0.35
+ENV GTS_VERSION 2.6.5
+#ENV TOMCAT_VERSION 8.0.35
+ENV TOMCAT_VERSION 8.5.29
 ENV JAVA_HOME /usr/local/java
 ENV ORACLE_JAVA_HOME /usr/lib/jvm/java-8-oracle/
 
