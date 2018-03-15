@@ -55,7 +55,10 @@ RUN cd $GTS_HOME; sed -i 's/\(mysql-connector-java\).*.jar/\1-5.1.31-bin.jar/' b
     sed -i 's/\(<include name="mail.jar"\/>\)/\1\n\t<include name="javax.mail.jar"\/>/' build.xml; \
     sed -i 's/"mail.jar"/"javax.mail.jar"/' src/org/opengts/tools/CheckInstall.java
 
-RUN mkdir /usr/local/traccar/ && cd /usr/local/traccar/ && wget https://github.com/tananaev/traccar/releases/download/v3.7/traccar-linux-64-3.7.zip && unzip traccar-linux-64-3.7.zip && ./traccar.run
+#RUN mkdir /usr/local/traccar/ && cd /usr/local/traccar/ && wget https://github.com/tananaev/traccar/releases/download/v3.7/traccar-linux-64-3.7.zip && unzip traccar-linux-64-3.7.zip && ./traccar.run
+RUN mkdir /usr/local/traccar/ 
+ADD traccar-linux-64-3.7.zip /usr/local/traccar/
+RUN cd /usr/local/traccar/  && unzip traccar-linux-64-3.7.zip && ./traccar.run
 RUN cd /opt/traccar/conf/ && mv traccar.xml traccar.xml.asli
 ADD traccar.xml /opt/traccar/conf/
 
@@ -70,7 +73,7 @@ RUN apt-get update && apt install -y mysql-client
 
 RUN rm -rf /usr/local/tomcat/webapps/examples /usr/local/tomcat/webapps/docs
 
-EXPOSE 5001-5120 8080 8082 8090 9000
+EXPOSE 31200 5001-5120 8080 8082 8090 9000
 CMD ["/usr/local/tomcat/bin/run.sh"]
 #CMD ["/opt/traccar/bin/traccar start"]
 #halilintar8
